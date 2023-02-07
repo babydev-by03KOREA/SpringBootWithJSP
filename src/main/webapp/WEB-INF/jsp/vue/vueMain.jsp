@@ -10,7 +10,7 @@
 	<jsp:include page="./header.jsp"></jsp:include>
 	<div id="app">{{ message }}</div>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	<script src="js/vueMain.js"></script>
+	<script src="../static/js/vueMain.js"></script>
 	<jsp:include page="./footer.jsp"></jsp:include>
 </body>
 </html>

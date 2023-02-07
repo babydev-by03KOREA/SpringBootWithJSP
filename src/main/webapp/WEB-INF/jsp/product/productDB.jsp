@@ -6,49 +6,47 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>상품 DTO List JSP</title>
+<title>Product Values by MySQL</title>
 <style>
 table {
 	text-align: center;
+}
+a {
+	text-decoration: none;
 }
 </style>
 </head>
 <body>
 	<h1>상품 TableList JSP</h1>
-	<table>
+	<table border="1">
 		<thead>
 			<tr>
 				<td>순번</td>
-				<td>상품명</td>
+				<td>회사명</td>
+				<td>상품명[PK]</td>
 				<td>상품설명</td>
+				<td>판매상태</td>
 				<td>가격</td>
 				<td>상품등록일</td>
+				<td>상품수정일</td>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="items" items="${itemList}" varStatus="status">
+			<c:forEach var="items" items="${productList}" varStatus="status">
 				<tr>
-					<%-- <td>${status.index}</td> --%>
-					<td>
-						<%-- <c:if test="${status.index % 2 eq 0}">
-							<c:out value="짝수"></c:out>
-						</c:if> 
-						<c:if test="${status.index % 2 eq 1}">
-							<c:out value="홀수"></c:out>
-						</c:if> --%>
-						<c:choose>
-							<c:when test="${status.index % 2 eq 0}">
-								<c:out value="짝수"></c:out>
-							</c:when>
-							<c:otherwise>
-								<c:out value="홀수"></c:out>
-							</c:otherwise>
-						</c:choose>
-					</td>
-					<td>${items.itemName}</td>
+					<td>${status.count}</td>
+					<td>${items.id}</td>
+					<td><a href="/mybatis/update/${items.itemName}">${items.itemName}</a></td>
 					<td>${items.itemDetail}</td>
+					<td>${items.sellStatCd}</td>
 					<td><fmt:formatNumber>${items.price}</fmt:formatNumber>₩</td>
 					<td>${items.regTime}</td>
+					<c:if test = "${items.updateTime ne items.regTime}">
+						<td><c:out value="${items.updateTime}" /></td>
+					</c:if>
+					<c:if test="${items.updateTime eq items.regTime}">
+						<td><c:out value="not update" /></td>
+					</c:if>
 				</tr>
 			</c:forEach>
 		</tbody>

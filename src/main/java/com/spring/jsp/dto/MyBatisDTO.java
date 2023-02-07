@@ -9,4 +9,5 @@ public class MyBatisDTO {
 	private String name;
 	private String id;
 	private Integer age;
+	private Integer configure;
 }

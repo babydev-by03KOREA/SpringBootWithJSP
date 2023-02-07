@@ -7,10 +7,6 @@
 <title>VUE-FOOTER</title>
 <style scoped>
 footer {
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
 	border-top: 1px solid #35495e;
 	text-align: center;
 	font-size: 16px;
