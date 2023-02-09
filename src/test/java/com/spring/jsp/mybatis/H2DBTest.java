@@ -21,17 +21,16 @@ import com.spring.jsp.mapper.ProductDAO;
 @Transactional
 @TestPropertySource(locations = "classpath:application-test.properties")
 public class H2DBTest {
-	
+
 	private Logger logger = LoggerFactory.getLogger(H2DBTest.class);
 
-	
 	private final ProductDAO productDAO;
-	
+
 	@Autowired
 	public H2DBTest(ProductDAO productDAO) {
 		this.productDAO = productDAO;
 	}
-	
+
 	@Test
 	public void insertTest() throws Exception {
 		ProductDTO products = new ProductDTO();
@@ -45,25 +44,18 @@ public class H2DBTest {
 		logger.info("test Products > " + products.toString());
 		productDAO.insert(products);
 	}
-	
+
 	@Test
 	public void deleteTest() throws Exception {
 		logger.info("junit 삭제");
 		productDAO.delete("junit");
 	}
-	
+
 	@Test
 	public void updateTest() throws Exception {
 		logger.info("junit update");
-		ProductDTO products = new ProductDTO();
-		products.setId("junit");
-		products.setItemName("junit Update");
-		products.setPrice(1000);
-		products.setItemDetail("junit test case update");
-		products.setSellStatCd("SELL");
-		products.setUpdateTime(LocalDateTime.now());
-		logger.info("UPDATE > " + products.toString());
-		productDAO.update(products);
+
+		productDAO.update("junit", "junit Update", 1000, "junit test case update", "SELL");
 	}
-	
+
 }

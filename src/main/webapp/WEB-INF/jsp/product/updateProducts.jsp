@@ -9,7 +9,7 @@
 <title>DB UPDATE</title>
 </head>
 <body>
-	<h1>수정할 상품명 : ${itemName}</h1>
+	<h1>수정할 상품명 : ${selectItem.itemName}</h1>
 	<form action="/mybatis/updateProduct" method="post">
 		<table>
 			<thead>
@@ -22,6 +22,9 @@
 				<tr>
 					<td>id</td>
 					<td><input type="text" name="id" value="${selectItem.id}" /></td>
+				</tr>
+				<tr>
+					<td><input type="hidden" name="itemName" value="${selectItem.itemName}" /></td>
 				</tr>
 				<tr>
 					<td>price</td>
@@ -51,7 +54,7 @@
 				</tr>
 				<tr>
 					<td>POST</td>
-					<td><button type="submit">MODIFY</button></td>
+					<td><button type="submit" value="update">MODIFY</button></td>
 				</tr>
 			</tbody>
 		</table>

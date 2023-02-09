@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,17 +27,12 @@ import com.spring.jsp.mapper.MyBatisTest;
 public class MyBatisUnitTest {
 //	DataSource > DB와 관련된 커넥션 정보를 담고있으며, 빈으로 등록하여 인자를 넘겨준다.
 //	Connection Info > application.properties File
-	private Logger logger = LoggerFactory.getLogger(MyBatisUnitTest.class);
-	
-	private final DataSource dataSource;
-	private final MyBatisTest myBatisTest;
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-//	 생성자의 주입 / spring에서 가장 권장하는 방법
 	@Autowired
-	public MyBatisUnitTest(DataSource dataSource, MyBatisTest myBatisTest) {
-		this.dataSource = dataSource;
-		this.myBatisTest = myBatisTest;
-	}
+	private DataSource dataSource;
+	@Autowired
+	private MyBatisTest myBatisTest;
 
 	@Test
 	public void MapperTest() throws Exception {

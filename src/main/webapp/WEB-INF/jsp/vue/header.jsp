@@ -54,14 +54,14 @@
 		<h1><a href="/vue"><img src="/image/Trip.do.png" alt="trip.do" /></a></h1>
 		<div class="menuWrap">
 			<ul class="menu">
-				<li><a href="javascript:;">메뉴1</a></li>
-				<li><a href="javascript:;">메뉴2</a></li>
-				<li><a href="javascript:;">메뉴3</a></li>
-				<li><a href="javascript:;">메뉴4</a></li>
+				<li><a href="/vue/list">상품 리스트</a></li>
+				<li><a href="/vue/add">상품등록</a></li>
+				<li><a href="/vue/modify">상품수정</a></li>
+				<li><a href="/vue/remove">상품삭제</a></li>
 			</ul>
 		</div>
 	</header>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	
+
 </body>
 </html>
