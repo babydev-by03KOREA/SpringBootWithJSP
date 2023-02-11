@@ -43,7 +43,7 @@ public class MyBatisController {
 		return itemMap;
 	}
 
-	@GetMapping("/itemList")
+	@GetMapping
 	public String printItemList(Model model) throws Exception {
 		List<ProductDTO> productList = productDAO.listProductItems();
 		model.addAttribute("productList", productList);
@@ -60,7 +60,7 @@ public class MyBatisController {
 	public String addValues(ProductDTO dto) throws Exception {
 		productDAO.insert(dto);
 		logger.info("입력 완료 후 items로 redirect");
-		return "redirect:itemList";
+		return "redirect:/mybatis";
 	}
 
 	@GetMapping("/update/{itemName}")
@@ -69,9 +69,9 @@ public class MyBatisController {
 
 //		model.addAttribute("itemName", itemName);
 		/**
-		 * itemName value를 DB에서 SELECT > 입력 폼에 저장 List<DTO> 사용시 List[0]를 JSP에서 줘야하는 불편함이
-		 * 생김
+		  @param itemName value를 DB에서 SELECT > 입력 폼에 저장 List<DTO> 사용시 List[0]를 JSP에서 줘야하는 불편함이 생김
 		 */
+
 		Map<String, ProductDTO> itemOneMap = productDAO.selectUpdate(itemName);
 
 		model.addAttribute("selectItem", itemOneMap);
@@ -82,12 +82,14 @@ public class MyBatisController {
 	public String updateProduct(@ModelAttribute ProductDTO dto) throws Exception {
 		productDAO.update(dto.getItemName(), dto.getId(), dto.getPrice(), dto.getItemDetail(), dto.getSellStatCd());
 		logger.info("[POST] update Product approach > DB");
-		return "redirect:itemList";
+		return "redirect:/mybatis";
 	}
 
-	@PostMapping("/delete")
-	public void DeleteItem() throws Exception {
-
+	@GetMapping("/delete/{itemName}")
+	public String DeleteItem(@PathVariable String itemName) throws Exception {
+		productDAO.delete(itemName);
+		logger.info("mybatis 삭제 Logic 진입.");
+		return "redirect:/mybatis";
 	}
 
 }
